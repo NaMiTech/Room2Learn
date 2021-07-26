@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## Qué es
 
-You can use the [editor on GitHub](https://github.com/NaMiTech/Scape-room/edit/gh-pages/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Una forma distinta de repasar los contenidos que se imparten en clase, no es solo una "gamificación" de la asignaturas, es llevarlas a la práctica mediante juegos, misiones y retos que llevarán no solo a entender lo que estas aprendiendo, sino para qué sirve lo que aprendes. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### ¿Dónde lo puedo conseguir?
 
-### Markdown
+Está disponible para Android e IOS
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### ¿Cuanto cuesta?
 
+¡Nada!
+
+### ¿Cómo puedo colaborar?
+
+Depende... ¿sabes programar? Si la respuesta es si puedes seguir estás instruccioenes. En caso contrario, no te preocupes, ¡¡seguimos necesitando tu ayuda!! Puedes aportar ideas, nuevas pantallas, nuevos retos... sencillamente mandanos lo que se te ocurra, de la forma más detallada posible, e intentaremos incorporarla en la aplicación. 
+
+¡Esto lo mejoramos entre todos!
+
+### Asignaturas y pantallas
+
+### Añadir mi código
+
+Puedes añadir tu propio desarrollo a la aplicación, para ello sigue los siguientes pasos: 
 ```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+1. Clona este repositorio
+2. Crea una nueva rama usando `git checkout -b nombreDeTuRama` 
+3. Desarrolla los cambios que quieras
+4. Sube tu código usando `git ` 
+5. Haz una solicitud de pull-request
 ```
+### Colaboradores
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/NaMiTech/Scape-room/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<table>
+  <tr>
+<td align="center"><a href="https://github.com/crakernano"><img src="https://avatars.githubusercontent.com/u/8074507?s=96&v=4" width="100px;" alt=""/><br /><sub><b>David Martín Peral</b></sub></a><br /><a href="" title="Slack">💬</a> <a href="mailto:" title="email">✉️</a></td>    
+  </tr>
+</table>
