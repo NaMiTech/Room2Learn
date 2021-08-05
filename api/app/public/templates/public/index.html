@@ -1,0 +1,110 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}NaMi - Login{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Zen+Loop&display=swap');
+
+    body{
+        /*background-image: url({{url_for('static', filename='img/wanacarecover.jpg')}});*/
+        font-family: "Gotham Rounder-Book";
+        color: #5b5b5b;
+        font-size: 1rem;
+    }
+
+    form label{
+        color: #f6a51f;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin:0.9375rem 0;
+    }
+
+    header{
+        width: 100%;
+        height: 100px;
+        padding: 35px;
+        padding-bottom: 35px;
+        padding-left: 45px;
+        font-family: 'Zen Loop', cursive;
+        background-image: linear-gradient(to right, #6f74dd, #00227b);
+        /*margin-bottom: 1.5rem;*/
+    }
+
+    header h1{
+        font-family: 'Zen Loop', cursive;
+        font-size: 3rem;
+        color: #FFF;
+    }
+
+    header img{
+        height: 77px;
+        width: 256px;
+    }
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: calc(100vh - 45px);
+        background-image: url("{{url_for('static', filename='img/fondo.jpg')}}");
+        background-color: #020e1a;
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: 100vw;
+        margin-bottom: -2.5rem;
+    }
+
+footer{
+    font-family: 'Zen Loop', cursive;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-image: linear-gradient(to right, #6f74dd, #00227b);
+    opacity: 0.9;
+    margin-bottom: -5rem;
+}
+
+footer .col, .col-6{
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+}
+</style>
+
+<header>
+    <!--<img src="{{url_for('static', filename='img/imagotipo_wanacare.png')}}" class="rounded" alt="LOGO">-->
+    <h1>NaMi</h1>
+</header>
+    <div class="container-fluid">
+
+
+
+    </div>
+
+<footer>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {{app_name}} v{{version}}
+    </div>
+    <div class="col-6">
+     Todos los derechos reservados por Nami
+    </div>
+    <div class="col">
+      {{year}}
+    </div>
+  </div>
+</div>
+</footer>
+
+{% endblock %}

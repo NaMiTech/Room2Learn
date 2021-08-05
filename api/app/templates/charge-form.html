@@ -1,0 +1,43 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Nuevo Cliente{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+<form action="{{ url_for('charge') }}" method="POST" class="form form-horizontal"  role="form">
+    <div class="container-fluid">
+    <img class="logo" src="{{url_for('static', filename='img/imagotipo_wanacare.png')}}" class="rounded" alt="Wanacare">
+    	<div class="row justify-content-center">
+        	<div class="col-md-6">
+        		<div class="form-group">
+        			<label for="customer">Usuario</label>
+					<select name="customer" id="customer">
+						{% for customer in customers %}
+							<option value="{{customer.id}}">{{customer.name}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+                	<label for="amount">Cantidad</label>
+                    <input type="text" name="amount" id="amount">
+                </div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Cobrar</button>
+		</div>
+	</div>
+</form>
+
+
+
+
+{% endblock %}

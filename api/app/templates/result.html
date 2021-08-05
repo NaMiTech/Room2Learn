@@ -1,0 +1,51 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Nuevo Cliente{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+
+<style type="text/css">
+    
+    .container-fluid{
+        background-image: url("{{url_for('static', filename='img/404.png')}}");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+{% endblock %}
+
+{% include "navbar.html" %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+    {% if error is defined %}
+
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Error</h4>
+          <p>{{ error }}</p>
+          <hr>
+          <p class="mb-0">Wanacare.</p>
+        </div>
+
+    {% elif result is defined %}
+
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Succesfull</h4>
+          <p>{{ result }}</p>
+          <hr>
+          <p class="mb-0"><p class="mb-0">Wanacare.</p></p>
+        </div>
+
+    {% endif %}
+
+</div>
+{{super()}}
+{% block footer %}
+  {% include "footer.html" %}
+{% endblock %}
+
+{% endblock %}

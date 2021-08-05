@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Cliente{% endblock %}
+    {% block content %}
+    <a href="{{ url_for('chargeClient') }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Nuevo cobro</a>
+
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>      
+    </tr>
+  </thead>
+  <tbody>
+    {% for pay in pays %}
+      {{pay.amount}}
+   	{% endfor %}
+    
+  </tbody>
+</table>
+
+{% endblock %}

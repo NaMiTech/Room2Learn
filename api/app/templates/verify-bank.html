@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Profesional{% endblock %}
+    {% block content %}
+
+
+<form action="{{ url_for('verifyCount') }}" method="POST" class="form form-horizontal"  role="form">
+    <div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-md-6">
+        	<h2>Profesional</h2>
+			<div class="form-group">
+				<label for="{{form.amoun1.label.text}}">
+				{{form.amoun1.label}}</label>{{form.amoun1}}
+				
+				<label for="{{form.amoun2.label.text}}">
+				{{form.amoun2.label}}</label>{{form.amoun2}}
+						
+				<input type="hidden" name="user" value="{{customer.id}}">
+				<input type="hidden" name="count" value="{{count.id}}">
+
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>		
+			</div>
+    		</div>    
+        </div> 
+    </div>
+</form>
+    {% endblock %}

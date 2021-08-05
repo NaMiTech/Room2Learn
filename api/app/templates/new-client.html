@@ -1,0 +1,75 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Cliente{% endblock %}
+    {% block content %}
+
+
+<form action="{{ url_for('createClient') }}" method="POST" class="form form-horizontal"  role="form">
+    <div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-md-6">
+        <h2>Cliente</h2>
+	<div class="form-group">
+		<label for="{{form.name.label.text}}">
+		{{form.name.label}}</label>{{form.name}}
+		
+		<label for="{{form.email.label.text}}">
+		{{form.email.label}}</label>{{form.email}}
+				
+		<label for="{{form.phone.label.text}}">
+		{{form.phone.label}}</label>{{form.phone}}
+
+		<label for="{{form.address.label.text}}">
+		{{form.address.label}}</label>{{form.address}}
+
+		<label for="{{form.address2.label.text}}">
+		{{form.address2.label}}</label>{{form.address2}}
+
+		<label for="{{form.postal_code.label.text}}">
+		{{form.postal_code.label}}</label>{{form.postal_code}}
+
+		<label for="{{form.city.label.text}}">
+		{{form.city.label}}</label>{{form.city}}
+
+		<label for="{{form.state.text}}">
+		{{form.state.label}}</label>{{form.state}}
+
+		<label for="{{form.country.text}}">
+		{{form.country.label}}</label>{{form.country}}
+	</div>
+    </div>
+    <div class="col-md-6">
+        <h2>Tarjeta de credito</h2>
+
+		<label for="{{form.number.text}}">
+		{{form.number.label}}</label>{{form.number}}
+
+		<label for="{{form.exp_month.text}}">
+		{{form.exp_month.label}}</label>{{form.exp_month}}
+
+		<label for="{{form.exp_year.text}}">
+		{{form.exp_year.label}}</label>{{form.exp_year}}
+
+		<label for="{{form.cvc.text}}">
+		{{form.cvc.label}}</label>{{form.cvc}}
+
+		<button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+    </div>
+    
+        </div>
+    </div>
+
+   
+
+
+
+	</form>
+    {% endblock %}

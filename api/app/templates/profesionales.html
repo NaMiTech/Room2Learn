@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Cliente{% endblock %}
+    {% block content %}
+    <a href="{{ url_for('newProfesional_page') }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Nuevo Profesional</a>
+
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">email</th>
+      <th scope="col">dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+  	    {% for profesional in profesionales %}
+    <tr>
+      <th scope="row"><a href="profesional/{{profesional.id}}"> <i class="glyphicon glyphicon-eye-open" style="color: black"></i>	</th>
+      <td>{{profesional.name}}</td>
+      <td>{{profesional.email}}</td>
+      <td>{{profesional.line1}}</td>
+    </tr>
+    	{% endfor %}
+    
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Cliente{% endblock %}
+    {% block content %}
+    <a href="{{ url_for('newClient') }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Nuevo cliente</a>
+
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">email</th>
+      <th scope="col">dirección</th>
+    </tr>
+  </thead>
+  <tbody>
+  	    {% for customer in customers %}
+    <tr>
+      <th scope="row"><a href="cliente/{{customer.id}}"> <i class="glyphicon glyphicon-eye-open" style="color: black"></i>	</th>
+      <td>{{customer.name}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.line1}}</td>
+    </tr>
+    	{% endfor %}
+    
+  </tbody>
+</table>
+
+{% endblock %}

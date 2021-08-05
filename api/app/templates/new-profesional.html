@@ -1,0 +1,82 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Profesional{% endblock %}
+    {% block content %}
+
+
+<form action="{{ url_for('createProfessional') }}" method="POST" class="form form-horizontal"  role="form">
+    <div class="container">
+    	<div class="row justify-content-center">
+        	<div class="col-md-4">
+		        <h2>Profesional</h2>
+				<div class="form-group">
+					<label for="{{form.name.label.text}}">
+					{{form.name.label}}</label>{{form.name}}
+
+					<label for="{{form.lastname.label.text}}">
+					{{form.lastname.label}}</label>{{form.lastname}}		
+					
+					<label for="{{form.email.label.text}}">
+					{{form.email.label}}</label>{{form.email}}
+							
+					<label for="{{form.phone.label.text}}">
+					{{form.phone.label}}</label>{{form.phone}}
+
+					<label for="{{form.tax_number.label.text}}">
+					{{form.tax_number.label}}</label>{{form.tax_number}}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2>Dirección</h2>
+				<div class="form-group">
+				<label for="{{form.address.label.text}}">
+				{{form.address.label}}</label>{{form.address}}
+
+				<label for="{{form.address2.label.text}}">
+				{{form.address2.label}}</label>{{form.address2}}
+
+				<label for="{{form.postal_code.label.text}}">
+				{{form.postal_code.label}}</label>{{form.postal_code}}
+
+				<label for="{{form.city.label.text}}">
+				{{form.city.label}}</label>{{form.city}}
+
+				<label for="{{form.state.text}}">
+				{{form.state.label}}</label>{{form.state}}
+
+				<label for="{{form.country.text}}">
+				{{form.country.label}}</label>{{form.country}}
+				</div>
+			</div>
+		    <div class="col-md-4">
+		        <h2>Cuenta bancaria</h2>
+				<div class="form-group">
+				<label for="{{form.bank_name.text}}">
+				{{form.bank_name.label}}</label>{{form.bank_name}}
+
+				<label for="{{form.routing_number.text}}">
+				{{form.routing_number.label}}</label>{{form.routing_number}}
+
+				<label for="{{form.account_number.text}}">
+				{{form.account_number.label}}</label>{{form.account_number}}
+
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+				</div>
+		    </div>    
+        </div>
+    </div>
+
+   
+
+
+
+	</form>
+    {% endblock %}

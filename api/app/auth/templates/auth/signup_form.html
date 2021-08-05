@@ -1,0 +1,186 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+      @font-face {
+            font-family: "Gotham Rounded-Medium";
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{url_for('static', filename='fonts/GothamRounded-Medium.otf')}}');
+        }
+
+        @font-face {
+            font-family: "Gotham Rounded-Light";
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{url_for('static', filename='fonts/GothamRounded-Light.otf')}}');
+        }
+
+        @font-face{
+            font-family: Gotham Rounded-Book;
+            src: url('{{url_for('static', filename='css/Gotham.otf')}}');
+            font-weight: bold;
+        }
+
+
+    body{
+        /*background-image: url({{url_for('static', filename='img/wanacarecover.jpg')}});*/
+        font-family: "Gotham Rounder-Book"; 
+        color: #5b5b5b;
+        font-size: 1rem;
+    }
+
+    form{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 50rem;
+        /*height: 31.25rem;*/
+        height: auto;
+        padding-bottom: 30px;
+        border-radius: 0.625rem;
+        background: #fff;
+        margin-top: 2%;
+        margin-bottom: 1rem;
+        margin-left: 50%;
+        padding-top: 40px;
+        font-family: "Gotham Rounded-Book";
+    }
+
+    form label{
+        color: #f6a51f;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin:0.9375rem 0;
+    }
+
+    .sing_btn{
+        width: 18.75rem;
+        height: 2.8125rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+        outline: none;
+        background-color: #f6a51f;
+        background-image: linear-gradient(to right, #e52e1d, #f6a51f);
+        border: 0;
+        border-radius: 1.5625rem;
+        color: #fff;
+        font-weight: 400;
+        cursor: pointer;
+        margin-top: 2rem;
+        font-family: "Gotham Rounded-Book";
+    }
+
+    header{
+        width: 100%;
+        height: 100px;
+        padding: 35px;
+        padding-bottom: 35px;
+        padding-left: 45px;
+        background-color: #fff;
+        margin-bottom: 1.5rem;
+    }
+
+    header img{
+        height: 77px;
+        width: 256px;
+    }
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: calc(100vh - 45px);
+        background-image: url("{{url_for('static', filename='img/business.jpg')}}");
+        background-repeat: no-repeat;
+        background-size: 100vw:;
+        /*background-image: url("{{url_for('static', filename='img/login.jpg')}}");*/
+        /*background-repeat: no-repeat;*/
+        /*margin-bottom: -2.5rem;*/
+    }
+
+    .ask{
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        -ms-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        font-family: "Gotham Rounded-Light";
+    }
+
+    .ask a{
+        cursor: pointer;
+        font-family: "Gotham Rounded-Book";
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #f6a51f;
+        padding-left: 10px;
+}
+footer{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-image: linear-gradient(to right, #e52e1d, #f6a51f);
+    opacity: 0.9;
+    margin-bottom: -5rem;
+}
+
+footer .col, .col-6{
+    color: #FFF;
+    font-family: "Gotham Rounded-Book";
+    font-size: 1.2rem;
+}
+
+.element-check{
+    width: 100%;
+    text-align: initial;
+    padding-left: 30%;
+}
+</style>
+
+<header>
+    <img src="{{url_for('static', filename='img/imagotipo_wanacare.png')}}" class="rounded" alt="LOGO">
+</header>
+    <div class="container-fluid">
+    {% if error %}
+        <div class="alert alert-danger" role="alert"><strong>Error:</strong> {{ error }}</div>
+    {% endif %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.name, class='form-control') }}
+        {{ wtf.form_field(form.email, class='form-control') }}
+        {{ wtf.form_field(form.password, class='form-control') }}
+        {{ wtf.form_field(form.repeatPassword, class='form-control') }}
+        <div class="element-check">
+            {{ wtf.form_field(form.privacy, class='form-control') }}
+            {{ wtf.form_field(form.commercial, class='form-control') }}
+        </div>
+        <center>{{ form.submit(class="sing_btn") }}</center>
+    </form>
+</div>
+
+{{super()}}
+{% block footer %}
+  {% include "footer.html" %}
+{% endblock %}
+
+{% endblock %}
+
+
+

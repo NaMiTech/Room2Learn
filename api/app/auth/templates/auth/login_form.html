@@ -1,0 +1,184 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}NaMi - Login{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Zen+Loop&display=swap');
+
+    body{
+        /*background-image: url({{url_for('static', filename='img/wanacarecover.jpg')}});*/
+        font-family: 'Zen Loop', cursive;
+        color: #5b5b5b;
+        font-size: 1rem;
+    }
+
+    header h1{
+        font-family: 'Zen Loop', cursive;
+        font-size: 3rem;
+        color: #FFF;
+    }
+
+    form{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-align: center;
+        align-items: center;
+        /*width: 50rem;*/
+        /* height: 31.25rem;*/
+        border-radius: 0.625rem;
+        background: #fff;
+        opacity: 0.8;
+        margin-top: 7%;
+        padding-bottom: 2rem;
+        /*margin-left: 10%;*/
+        padding-top: 40px;
+        font-family: 'Zen Loop', cursive;
+    }
+
+    form label{
+        color: #6f74dd;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin:0.9375rem 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .sing_btn{
+        /*width: 18.75rem;*/
+        /*height: 2.8125rem;*/
+        width: 5rem;
+        height: 5rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+        outline: none;
+        background-color: #f6a51f;
+        background-image: linear-gradient(to right, #6f74dd, #00227b);
+        border: 0;
+        border-radius: 5rem;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+
+    }
+
+    header{
+        width: 100%;
+        height: 100px;
+        padding: 35px;
+        padding-bottom: 35px;
+        padding-left: 45px;
+        background-image: linear-gradient(to right, #6f74dd, #00227b);
+        /*margin-bottom: 1.5rem;*/
+    }
+
+    header img{
+        height: 77px;
+        width: 256px;
+    }
+
+    .container-fluid{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: calc(100vh - 45px);
+        background-image: url("{{url_for('static', filename='img/fondo.jpg')}}");
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: 100vw;
+        margin-bottom: -2.5rem;
+    }
+
+    .ask{
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        -ms-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+        font-family: 'Zen Loop', cursive;
+    }
+
+    .ask a{
+        cursor: pointer;
+        font-family: 'Zen Loop', cursive;
+        font-size: 1.2rem;
+        font-weight: 300;
+        color: #f6a51f;
+        padding-left: 10px;
+}
+footer{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-image: linear-gradient(to right, #6f74dd, #00227b);
+    opacity: 0.9;
+    margin-bottom: -5rem;
+}
+
+footer .col, .col-6{
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+}
+</style>
+
+<header>
+    <!--<img src="{{url_for('static', filename='img/imagotipo_wanacare.png')}}" class="rounded" alt="LOGO">-->
+    <h1>NaMi</h1>
+</header>
+    <div class="container-fluid">
+
+        <form action="" method="post" novalidate>
+
+                <center></center>
+                {{ form.hidden_tag() }}
+
+                {{ wtf.form_field(form.email, class='form-control', placeholder='your@email.com') }}
+                {% for error in form.email.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+
+                {{ wtf.form_field(form.password, class='form-control') }}
+                {% for error in form.password.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+                <div>
+                    <center>{{ form.submit(class="sing_btn") }}</center>
+                </div>
+            </form>
+
+    </div>
+
+<footer>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      NaMi
+    </div>
+    <div class="col-6">
+     Todos los derechos reservados por Nami
+    </div>
+    <div class="col">
+      2021
+    </div>
+  </div>
+</div>
+</footer>
+
+{% endblock %}

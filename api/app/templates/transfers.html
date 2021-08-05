@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}">
+{% endblock %}
+
+{% include "navbar.html" %}
+
+
+    {% block title %}Nuevo Cliente{% endblock %}
+    {% block content %}
+    <a href="{{ url_for('doPayment') }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Nuevo pago</a>
+
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>      
+      <th scope="col">cantidad</th>
+      <th scope="col">Origen</th>
+      <th scope="col">Destino</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Grupo</th>
+      <th scope="col">Descripción</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for transfer in transfers %}
+    <tr>
+      <td>{{transfer.id}}</td>
+      <td>{{transfer.amount}} {{transfer.currency}}</td>
+      <td>{{transfer.source_transaction}}</td>
+      <td>{{transfer.destination}}</td>
+      <td>{{transfer.balance_transaction}}</td>
+      <td>{{transfer.source_type}}</td>
+      <td>{{transfer.transfer_group}}</td>
+      <td>{{transfer.description}}</td>
+
+    </tr>
+   	{% endfor %}
+    
+  </tbody>
+</table>
+
+{% endblock %}

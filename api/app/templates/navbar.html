@@ -1,0 +1,266 @@
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+
+<style type="text/css">
+      @font-face {
+            font-family: "Gotham Rounded-Medium";
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{url_for('static', filename='fonts/GothamRounded-Medium.otf')}}');
+        }
+
+        @font-face {
+            font-family: "Gotham Rounded-Light";
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{url_for('static', filename='fonts/GothamRounded-Light.otf')}}');
+        }
+
+        @font-face{
+            font-family: Gotham Rounded-Book;
+            src: url('{{url_for('static', filename='css/Gotham.otf')}}');
+            font-weight: bold;
+        }
+
+body{
+  font-family: "Gotham Rounded-Book";
+}
+
+.container-fluid{
+    margin-top: 5rem;
+    min-height: calc(100vh - 45px);
+}
+  
+.nav-link{
+  margin-left: 12rem;
+  text-decoration: none;
+  /*color: #F6A51F;*/
+  color: #b6b6b6;
+  font-size: 1rem;
+  line-height: 1.7rem;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: "Gotham Rounded-Medium";
+}
+
+.nav-item{
+  margin-bottom: auto;
+  margin-top: auto;
+
+}
+/*
+a.nav-link:hover{
+    font-weight: 900;
+    margin-left: 12rem;
+    text-decoration: none;
+    color: #F6A51F;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Gotham Rounded-Book";
+}
+*/
+
+a.nav-link:hover{
+/*  color: #b6b6b6;*/
+  color: #F6A51F;  
+}
+
+a.nav-link:active{
+  /*color: #b6b6b6;  */
+  color: #F6A51F;
+}
+
+#navbarResponsive{
+  width: 100vw;
+  justify-content: center;
+}
+
+ul{
+  justify-content: space-around;
+}
+
+nav{
+  position: relative;
+  height: 6.0625rem;
+  width: 100%;
+  padding: 20px;
+  background-image: url('{{url_for('static', filename='img/imagotipo_wanacare_square.png')}}');
+  background-repeat: no-repeat;
+  background-size: 5.961rem 4.813rem;
+  background-position: 40px center;
+  box-shadow: 0 2px 3px #b6b6b6;
+  justify-content: center;
+}
+nav a img{
+  width: 97px;
+  height: 97px;
+}
+
+.nav-pills .nav-fill{
+ justify-content: center; 
+}
+
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  color: #b6b6b6;
+  width: 8.125rem;
+  -ms-transform: translate(100%);
+  -webkit-transform: translate(10%);
+  -moz-transform: translate(100%);
+  /*transform: translate(100%);*/
+  padding: 5px;
+  text-align: center;
+  background-color: white;
+  font-family: "Gotham Rounded-Medium";
+  border: 0.0625rem solid #f6a51f;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.375rem 0 rgba(0, 0, 0, 0.2);
+  z-index: 8;
+
+}
+
+.dropdown-divider{
+  line-height: 1.2rem;
+  font-size: .9rem;
+
+}
+
+.dropdown-menu a{
+  color: #b6b6b6;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #F6A51F;
+  background-color: #FFF;
+}
+
+table{
+  margin-left: 115px;
+  width: 85%;
+}
+
+table th{
+  text-align: center;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-family: "Gotham Rounded-Medium";
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.table{
+  margin-left: 115px;
+  width: 85%;
+}
+
+.table thead th{
+  border-top: none;
+  border-bottom: 2px solid #f6a51f;
+}
+
+
+#navbarDropdown{
+  background-image: url('/static/img/user.svg');
+  background-repeat: no-repeat;
+  height: 5rem;
+  background-color: #f6a51f;
+  padding: 20px;
+  border-radius: 50px;
+  width: 5rem;
+  border: 5px solid #f6a51f;
+  margin-left: auto;
+  margin-right: 5rem;
+}
+
+.lenguage{
+
+  width: 160px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-top: 15px;
+
+}
+
+.lenguage a{
+  font-family: "Gotham Rounded-Medium";
+  border: none;
+  text-decoration: none;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  color: #b6b6b6;
+  font-size: 0.9rem;
+}
+
+.lenguage a.active{
+  color: #f6a51f;
+}
+
+.lenguage span{
+  font-size: 0.7rem;
+  color: #b6b6b6;
+  padding-top: 5px;
+}
+
+.alert li{
+  list-style: none;
+}
+
+</style>
+
+
+<nav class="navbar navbar-expand-lg static-top">
+    <a class="navbar-brand" href="{{ url_for('professional.home_page') }}">
+          <!--<img src="{{url_for('static', filename='img/imagotipo_wanacare_square.png')}}" alt="">-->
+        </a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="nav nav-pills nav-fill" style="width: 100%;">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('professional.home_page') }}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('professional.professionals_page')}}">Profesionales</a>
+        </li>
+     
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('invoices.getInvoices')}}">Facturación</a>
+        </li>
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('{{url_for('static', filename='img/user.svg')}}');background-repeat: no-repeat;">          
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{url_for('auth.profile')}}">Perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{url_for('invoices.showTariff')}}">Tarifas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
+        </div>
+      </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <div class="lenguage">
+  {% if g['lang_code']=='en' %}
+    <a href="{{url_for('professional.change',new_lang_code='en')}}" class="active">En</a>
+    <span>/</span>
+    <a href="{{url_for('professional.change',new_lang_code='es')}}">Es</a>
+  {% else %}
+    <a href="{{url_for('professional.change',new_lang_code='en')}}">En</a>
+    <span>/</span>
+    <a href="{{url_for('professional.change',new_lang_code='es')}}" class="active">Es</a>
+  {% endif %}
+</div>

@@ -1,0 +1,119 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block styles %}
+{{super()}}
+<style type="text/css">
+    form{
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-align: center;
+        align-items: center;
+        height: 31.25rem;
+        border-radius: 0.625rem;
+        background: #fff;
+        margin-top: 7%;
+        margin-left: 10%;
+        padding-top: 40px;
+        font-family: "Gotham Rounded-Book";
+    }
+
+    form label{
+        color: #f6a51f;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin:0.9375rem 0;
+    }
+
+    #submit{
+        width: 18.75rem;
+        height: 2.8125rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+        outline: none;
+        background-color: #f6a51f;
+        background-image: linear-gradient(to right, #e52e1d, #f6a51f);
+        border: 0;
+        border-radius: 1.5625rem;
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 400;
+        cursor: pointer;
+        font-family: "Gotham Rounded-Medium";
+        text-transform: uppercase;
+    }
+</style>
+{% endblock %}
+{% include "navbar.html" %}
+{% block title %}Wanacare - Profile{% endblock %}
+{% block content %}
+		  	{% if error is not none %}
+				<div class="alert alert-warning" role="alert">
+			  		{{error}}
+				</div>
+			{% endif %}
+
+<div class="container-fluid">
+
+	<form action="{{url_for('auth.saveProfile')}}" method="post" novalidate>
+		  <div class="row">
+
+		    <div class="col-sm">
+				{{ wtf.form_field(form.phone, class='form-control', value=profile.phone) }}
+				{% for error in form.phone.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.EIN, class='form-control', value=profile.ein) }}
+				{% for error in form.EIN.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.address, class='form-control', value=profile.address) }}
+				{% for error in form.address.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.address2, class='form-control', value=profile.address2) }}
+				{% for error in form.address2.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.country, class='form-control', value=profile.country) }}
+				{% for error in form.country.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+		    </div>
+		    <div class="col-sm">
+				{{ wtf.form_field(form.city, class='form-control', value=profile.city) }}
+				{% for error in form.city.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.state, class='form-control', value=profile.state) }}
+				{% for error in form.state.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.zipcode, class='form-control', value=profile.zipcode) }}
+				{% for error in form.zipcode.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+
+				{{ wtf.form_field(form.contact_name, class='form-control', value=profile.contact_name) }}
+				{% for error in form.contact_name.errors %}
+					<span style="color: red;">{{ error }}</span>
+				{% endfor %}
+		    </div>
+		  </div>
+
+
+
+	<center>{{ form.submit() }}</center>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<main>
+  <div class="container" style="margin-top: 15%">
+    <div class="row">
+      <div class="col-md-6 align-self-center">
+            <img src="{{url_for('static', filename='img/404.png')}}" class="rounded" alt="Wanacare">
+      </div>
+      <div class="col-md-6 align-self-center">
+        <h1>ERROR</h1>
+        <h2>OH OH! ALGO SALIÓ MAL .</h2>
+        <p>Los sentimos, pero parece que algo ha salido mal.</p>
+        {% if message is defined %}
+        	<span>{{menssage}}</span>
+        {% endif %}	
+
+
+        {% if status is defined %}
+			<div class="card">
+			  <div class="card-header">
+			    {{status}}
+			  </div>
+			  <div class="card-body">
+			  	{% if response is defined %}
+				    <blockquote class="blockquote mb-0">
+				      <p>{{response}}</p>
+				    </blockquote>
+			    {% endif %}	
+			  </div>
+			</div>
+        {% endif %}	
+        <a href="{{ url_for('professional.home_page') }}" class="btn green"role="button">HOME</a>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+
