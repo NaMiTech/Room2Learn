@@ -15,6 +15,8 @@ Está disponible para Android e IOS
 
 Depende... ¿sabes programar? Si la respuesta es si puedes seguir estás instruccioenes. En caso contrario, no te preocupes, ¡¡seguimos necesitando tu ayuda!! Puedes aportar ideas, nuevas pantallas, nuevos retos... sencillamente mandanos lo que se te ocurra, de la forma más detallada posible, e intentaremos incorporarla en la aplicación. 
 
+![Colaboracion](https://raw.githubusercontent.com/NaMiTech/Room2Learn/gh-pages/docs/undraw_join_of2w.png)
+
 ¡Esto lo mejoramos entre todos!
 
 ### Asignaturas y pantallas
