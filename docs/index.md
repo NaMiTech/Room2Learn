@@ -11,6 +11,12 @@ Está disponible para Android e IOS
 
 ¡Nada!
 
+### Asignaturas y pantallas
+
+| Pantalla | Niveles | Asignaturas |
+| --- | --- | --- |
+| Zombies | 3º ESO | Mátematicas |
+
 ### ¿Cómo puedo colaborar?
 
 Depende... ¿sabes programar? Si la respuesta es si puedes seguir estás instruccioenes. En caso contrario, no te preocupes, ¡¡seguimos necesitando tu ayuda!! Puedes aportar ideas, nuevas pantallas, nuevos retos... sencillamente mandanos lo que se te ocurra, de la forma más detallada posible, e intentaremos incorporarla en la aplicación. 
@@ -19,7 +25,7 @@ Depende... ¿sabes programar? Si la respuesta es si puedes seguir estás instruc
 
 ¡Esto lo mejoramos entre todos!
 
-### Asignaturas y pantallas
+
 
 ### Añadir mi código
 
