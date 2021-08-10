@@ -21,6 +21,8 @@ Depende... ¿sabes programar? Si la respuesta es si puedes seguir estás instruc
 ### Añadir mi código
 
 Puedes añadir tu propio desarrollo a la aplicación, para ello sigue los siguientes pasos: 
+![Desarrolladores](https://raw.githubusercontent.com/NaMiTech/Room2Learn/gh-pages/docs/undraw_programming_2svr.png)
+
 ```markdown
 
 1. Clona este repositorio
