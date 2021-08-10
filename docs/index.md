@@ -7,6 +7,7 @@ Una forma distinta de repasar los contenidos que se imparten en clase, no es sol
 Está disponible para Android e IOS
 
 ### ¿Cuanto cuesta?
+![Precio](https://raw.githubusercontent.com/NaMiTech/Room2Learn/gh-pages/docs/undraw_wallet_aym5.png)
 
 ¡Nada!
 
