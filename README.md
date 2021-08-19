@@ -1,2 +1,3 @@
 # Room2Learn
-Juego para Android que permite repasar los conocimientos adquiridos en el instituo de forma entretenida
+
+Juego para móvil que permite repasar los conocimientos adquiridos en el instituto de forma entretenida
