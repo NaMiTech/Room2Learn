@@ -25,3 +25,4 @@ requests
 Flask-FontAwesome==0.1.5
 Flask-Babel
 stripe>=2.48.0,<3.0
+locust
