@@ -1,0 +1,31 @@
+name: npm audit
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+# on:
+#   schedule:
+#     - cron: '0 10 * * *'
+
+jobs:
+  scan:
+    name: npm audit
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./api
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm ci
+        working-directory: ${{env.working-directory}}   
+      - uses: oke-py/npm-audit-action@v1.7.3
+        with:
+          audit_level: moderate
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_assignees: oke-py
+          issue_labels: vulnerability,test
+          dedupe_issues: true
