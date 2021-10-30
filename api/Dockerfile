@@ -1,7 +1,6 @@
 FROM python:latest
 
 RUN apt update
-RUN apt install python-mysqldb
 RUN apt install gcc
 RUN pip install --upgrade pip
 
