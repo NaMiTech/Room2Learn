@@ -2,8 +2,6 @@
 
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
-from bson.objectid import ObjectId
-from bson import json_util
 from flask import Flask, request, g, session, redirect
 import os
 from flask_sqlalchemy import SQLAlchemy
