@@ -58,7 +58,8 @@ def getLesson(*args, **kwargs):
     '''
     ret = []
     ret_code = 400
-    logger.info("Devolver %s" % request.args.get('page'))
+    logger.info("Leeciones para el nivel %s , pagina %s" %
+                (request.args.get('level'), request.args.get('page')))
 
     try:
         results = Clase.get_lesson(request.args.get('level'),
