@@ -39,7 +39,10 @@ class Clase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String)
     text = db.Column(db.Text)
-    lesson = db.Column(db.Integer, db.ForeignKey('lecciones.id'), nullable=False, default=0)
+    lesson = db.Column(db.Integer,
+                       db.ForeignKey('lecciones.id'),
+                       nullable=False,
+                       default=0)
     level = db.Column(db.Integer)
     type = db.Column(db.Integer)
     order = db.Column(db.Integer)
@@ -58,9 +61,16 @@ class Clase(db.Model):
         return Clase.query.all()
 
     @staticmethod
-    def get_lesson(lesson, page):
+    def get_levels_by_lesson(lesson):
         try:
-            return Clase.query.filter_by(level=lesson).filter_by(order=page).first()
+            return Clase.query.filter_by(lesson=lesson).distinct(Clase.level)
+        except Exception as e:
+            logger.error("Error al devolver la leccion solicitada %s" % str(e))
+
+    @staticmethod
+    def get_lesson(lesson, level, page):
+        try:
+            return Clase.query.filter_by(lesson=lesson).filter_by(level=level).filter_by(order=page).first()
         except Exception as e:
             logger.error("Error al devolver la leccion solicitada %s" % str(e))
 
@@ -74,7 +84,9 @@ class Evaluacion(db.Model):
     pregunta3 = db.Column(db.Text, nullable=True)
     pregunta4 = db.Column(db.Text, nullable=True)
     respuesta = db.Column(db.Integer)
-    lesson = db.Column(db.Integer, db.ForeignKey('lecciones.id'), nullable=False)
+    lesson = db.Column(db.Integer,
+                       db.ForeignKey('lecciones.id'),
+                       nullable=False)
     level = db.Column(db.Integer)
     order = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -98,7 +110,9 @@ class Evaluacion(db.Model):
 class Resultado (db.Model):
     __tablename__ = 'resultados'
     id = db.Column(db.Integer, primary_key=True)
-    lesson = db.Column(db.Integer, db.ForeignKey('lecciones.id'), nullable=False)
+    lesson = db.Column(db.Integer,
+                       db.ForeignKey('lecciones.id'),
+                       nullable=False)
     level = db.Column(db.Integer)
     order = db.Column(db.Integer)
     results = db.Column(db.Float)

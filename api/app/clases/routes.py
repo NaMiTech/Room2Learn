@@ -3,13 +3,72 @@ from flask import jsonify, request
 import logging
 import flask
 import psycopg2
-from .models import Clase, Evaluacion
+from .models import Clase, Evaluacion, Leccion
 
 logger = logging.getLogger(__name__)
 
 
-@class_bp.route('/api/class', methods=['GET'])
-def getAllProducts(*args, **kwargs):
+@class_bp.route('/api/lessons', methods=['GET'])
+def getLessons(*args, **kwargs):
+
+    ret = []
+    ret_code = 400
+    logger.info("Devolver todas las lecciones")
+
+    try:
+        results = Leccion.get_all()
+        if results is not None:
+
+            for result in results:
+                ret.append({"id": result.id,
+                            "title": result.title,
+                            "description": result.description,
+                            "icon": result.icon,
+                            "created_at": result.created_at,
+                            "update_at": result.updated_at
+                            })
+            ret_code = 200
+        else:
+            logger.error("No hay más lecciones para %s" %
+                         request.args.get('level'))
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error("Error al recuperar la lección %s" % str(error))
+        ret_code = 404
+        ret.append({"Error": "Error al realizar la consulta " + error})
+
+    finally:
+        return flask.make_response(jsonify(ret), ret_code)
+
+
+@class_bp.route('/api/lesson', methods=['GET'])
+def getLesson(*args, **kwargs):
+
+    ret = []
+    ret_code = 400
+    logger.info("Devolver el detalle de una leccion")
+
+    try:
+        results = Clase.get_levels_by_lesson(request.args.get('level'))
+        if results is not None:
+            for result in results:
+                ret.append({"level": result.level})
+            ret_code = 200
+        else:
+            logger.error("No hay más lecciones para %s" %
+                         request.args.get('level'))
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error("Error al recuperar la lección %s" % str(error))
+        ret_code = 404
+        ret.append({"Error": "Error al realizar la consulta " + error})
+
+    finally:
+        return flask.make_response(jsonify(ret), ret_code)
+
+
+@class_bp.route('/api/clases', methods=['GET'])
+def getClases(*args, **kwargs):
     '''
     Devuelve todas las clases de una lección
 
@@ -42,8 +101,8 @@ def getAllProducts(*args, **kwargs):
         return flask.make_response(jsonify(ret), ret_code)
 
 
-@class_bp.route('/api/lesson', methods=['GET'])
-def getLesson(*args, **kwargs):
+@class_bp.route('/api/clase', methods=['GET'])
+def getClase(*args, **kwargs):
     '''
     Devuelve las lecciones disponibles para un determinado nivel (curso)
 
@@ -54,7 +113,7 @@ def getLesson(*args, **kwargs):
     Returns:
         json: objeto Clase
 
-    Example {base_url}/api/lesson?page=1&level=1
+    Example {base_url}/api/clase?lesson=1&page=1&level=1
     '''
     ret = []
     ret_code = 400
@@ -62,7 +121,8 @@ def getLesson(*args, **kwargs):
                 (request.args.get('level'), request.args.get('page')))
 
     try:
-        results = Clase.get_lesson(request.args.get('level'),
+        results = Clase.get_lesson(request.args.get('lesson'),
+                                   request.args.get('level'),
                                    request.args.get('page'))
 
         if results is not None:
