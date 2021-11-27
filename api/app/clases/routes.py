@@ -1,9 +1,10 @@
 from . import class_bp
-from flask import jsonify, request
+from flask import jsonify, request, current_app
 import logging
 import flask
 import psycopg2
-from .models import Clase, Evaluacion, Leccion
+from werkzeug.utils import secure_filename
+from .models import Clase, Evaluacion, Leccion, Resultado
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +50,7 @@ def getLesson(*args, **kwargs):
     logger.info("Devolver el detalle de una leccion")
 
     try:
-        results = Clase.get_levels_by_lesson(request.args.get('level'))
+        results = Clase.get_levels_by_lesson(request.args.get('lesson'))
         if results is not None:
             for result in results:
                 ret.append({"level": result.level})
@@ -107,6 +108,7 @@ def getClase(*args, **kwargs):
     Devuelve las lecciones disponibles para un determinado nivel (curso)
 
     Parameters:
+        lesson (String): Lección a la que pertenece
         level (String): Nivel de dificultad
         page (String):  Pagina de la lección
 
@@ -205,7 +207,7 @@ def getAnswer(*args, **kwargs):
         Bool: True si la respuesta es correcta
               False en caso contrario
 
-    Example {base_url}/api/answer?page=3&level=1&answer=1&answer=1
+    Example {base_url}/api/answer?lesson=1&page=3&level=1&answer=1
     '''
 
     ret = []
@@ -218,7 +220,17 @@ def getAnswer(*args, **kwargs):
         if results is not None:
             if(str(results.respuesta) == request.args.get('answer')):
                 acerto = "true"
+                resultado = Resultado(lesson=request.args.get('lesson'),
+                                      level=request.args.get('level'),
+                                      order=request.args.get('page'),
+                                      results=True)
+                resultado.save()
             else:
+                resultado = Resultado(lesson=request.args.get('lesson'),
+                                      level=request.args.get('level'),
+                                      order=request.args.get('page'),
+                                      results=False)
+                resultado.save()
                 acerto = "false"
     except (Exception, psycopg2.DatabaseError) as error:
         logger.error("Error al recuperar la preguntas %s" % str(error))
@@ -227,6 +239,59 @@ def getAnswer(*args, **kwargs):
         ret.append({"answer": acerto})
 
     return flask.make_response(jsonify(ret), ret_code)
+
+
+@class_bp.route('/api/results', methods=['GET'])
+def getResults(*args, **kwargs):
+    ret = []
+    ret_code = 200
+    try:
+        results = Resultado.get_all()
+        if results is not None:
+            for result in results:
+                ret.append({
+                    "lesson": result.lesson,
+                    "level": result.level,
+                    "order": result.order,
+                    "results": result.results,
+                    "created_at": result.created_at,
+                })
+            ret_code = 200
+        else:
+            ret.append({"message": "No hay resultados aun"})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error("Error al recuperar los resultados %s" % str(error))
+        ret_code = 404
+        ret.append({"Error": "Error al realizar la consulta " + error})
+
+    finally:
+        return flask.make_response(jsonify(ret), ret_code)
+
+
+@class_bp.route('/api/report', methods=['GET'])
+def getReport(*args, **kwargs):
+    '''
+    /api/report?lesson=1&page=3&level=1
+    '''
+    ret = []
+    ret_code = 200
+    try:
+        results = Resultado.get_result4lesson(request.args.get('lesson'),
+                                              request.args.get('page'),
+                                              request.args.get('level'))
+        if results is not None:
+            ret = results
+        else:
+            ret.append({"message": "No hay resultados aun"})
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        logger.error("Error al recuperar los resultados %s" % str(error))
+        ret_code = 404
+        ret.append({"Error": "Error al realizar la consulta " + error})
+
+    finally:
+        return flask.make_response(jsonify(ret), ret_code)
 
 
 @class_bp.errorhandler(404)

@@ -18,7 +18,7 @@ import json
 def login():
 
     if current_user.is_authenticated:
-        return redirect(url_for('professional.home_page'))
+        return redirect(url_for('public.index_page'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.get_by_email(form.email.data)
@@ -28,7 +28,7 @@ def login():
 
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('professional.home_page')
+                next_page = url_for('public.index_page')
             return redirect(next_page)
     return render_template('auth/login_form.html', form=form)
 

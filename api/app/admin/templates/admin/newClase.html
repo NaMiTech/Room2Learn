@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Nueva Clase | Room2Learn</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url_for('public.index_page') }}">Room2Learn</a>
+
+          <span class="input-group-text">Hola {{ current_user.name }}</span>
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Sign out</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="wrapper">
+            <form action="" method="post" enctype="multipart/form-data" novalidate>
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    {{ form.level.label }}
+                    {{ form.level }}
+                    {% for error in form.level.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+
+                    {{ form.type.label }}
+                    {{ form.type }}
+                    {% for error in form.type.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+
+                    {{ form.order.label }}
+                    {{ form.order }}
+                    {% for error in form.order.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+
+                    {{ form.lesson.label }}
+                    {{ form.lesson }}
+                    {% for error in form.lesson.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.text.label }}
+                    {{ form.text }}
+                    {% for error in form.text.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="postImage">Imagen de cabecera:</label>
+                    <input type="file" id="postImage" name="image" accept="image/png, image/jpeg">
+                    {% for error in form.image.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.submit() }}
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

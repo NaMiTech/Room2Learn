@@ -29,7 +29,7 @@ body{
     margin-top: 5rem;
     min-height: calc(100vh - 45px);
 }
-  
+
 .nav-link{
   margin-left: 12rem;
   text-decoration: none;
@@ -63,7 +63,7 @@ a.nav-link:hover{
 
 a.nav-link:hover{
 /*  color: #b6b6b6;*/
-  color: #F6A51F;  
+  color: #F6A51F;
 }
 
 a.nav-link:active{
@@ -98,7 +98,7 @@ nav a img{
 }
 
 .nav-pills .nav-fill{
- justify-content: center; 
+ justify-content: center;
 }
 
 .dropdown-menu{
@@ -218,32 +218,25 @@ table th{
 
 
 <nav class="navbar navbar-expand-lg static-top">
-    <a class="navbar-brand" href="{{ url_for('professional.home_page') }}">
+    <a class="navbar-brand" href="{{ url_for('public.home_page') }}">
           <!--<img src="{{url_for('static', filename='img/imagotipo_wanacare_square.png')}}" alt="">-->
         </a>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="nav nav-pills nav-fill" style="width: 100%;">
         <li class="nav-item active">
-          <a class="nav-link" href="{{ url_for('professional.home_page') }}">Home
+          <a class="nav-link" href="{{ url_for('public.home_page') }}">Home
                 <span class="sr-only">(current)</span>
               </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('professional.professionals_page')}}">Profesionales</a>
-        </li>
-     
-        <li class="nav-item">
-          <a class="nav-link" href="{{url_for('invoices.getInvoices')}}">Facturación</a>
         </li>
 
 
       <li class="nav-item dropdown">
-        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('{{url_for('static', filename='img/user.svg')}}');background-repeat: no-repeat;">          
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('{{url_for('static', filename='img/user.svg')}}');background-repeat: no-repeat;">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{url_for('auth.profile')}}">Perfil</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{url_for('invoices.showTariff')}}">Tarifas</a>
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{url_for('auth.logout')}}">Logout</a>
         </div>
@@ -252,15 +245,3 @@ table th{
       </ul>
     </div>
   </nav>
-
-  <div class="lenguage">
-  {% if g['lang_code']=='en' %}
-    <a href="{{url_for('professional.change',new_lang_code='en')}}" class="active">En</a>
-    <span>/</span>
-    <a href="{{url_for('professional.change',new_lang_code='es')}}">Es</a>
-  {% else %}
-    <a href="{{url_for('professional.change',new_lang_code='en')}}">En</a>
-    <span>/</span>
-    <a href="{{url_for('professional.change',new_lang_code='es')}}" class="active">Es</a>
-  {% endif %}
-</div>

@@ -115,7 +115,7 @@ class Resultado (db.Model):
                        nullable=False)
     level = db.Column(db.Integer)
     order = db.Column(db.Integer)
-    results = db.Column(db.Float)
+    results = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime)
 
@@ -130,6 +130,21 @@ class Resultado (db.Model):
     @staticmethod
     def get_all():
         return Resultado.query.all()
+
+    @staticmethod
+    def get_result4lesson(lesson, page, level):
+        resultado = {"lesson": lesson,
+                     "page": page,
+                     "level": level,
+                     "success": 0,
+                     "mistakes": 0}
+        success = Resultado.query.filter_by(lesson=lesson).filter_by(level=level).filter_by(order=page).filter_by(results=True).count()
+        mistakes = Resultado.query.filter_by(lesson=lesson).filter_by(level=level).filter_by(order=page).filter_by(results=False).count()
+
+        resultado["success"]  = success
+        resultado["mistakes"] = mistakes
+        return resultado
+
 
     @staticmethod
     def get_lesson(lesson, page):
