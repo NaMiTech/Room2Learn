@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import json
 from flask import Flask, request, g, session, redirect
 import os
+from os.path import abspath, dirname, join
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user, login_required
@@ -39,6 +40,13 @@ def create_app():
 
     bootstrap = Bootstrap(app)
 
+    # Define the application directory
+    BASE_DIR = dirname(dirname(abspath(__file__)))
+    # Media dir
+    MEDIA_DIR = join(BASE_DIR, 'media')
+    app.config['MEDIA_DIR'] = join(BASE_DIR, 'media')
+    app.config['POSTS_IMAGES_DIR'] = join(MEDIA_DIR, 'posts')
+
     # Cache
     cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
@@ -53,6 +61,9 @@ def create_app():
 
     from .auth import auth_bp
     app.register_blueprint(auth_bp)
+
+    from .admin import admin_bp
+    app.register_blueprint(admin_bp)
 
     # Conexión a la base de datos relacional
     try:

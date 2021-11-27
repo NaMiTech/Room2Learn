@@ -12,7 +12,7 @@
         <p>Los sentimos, pero parece que algo ha salido mal.</p>
         {% if message is defined %}
         	<span>{{menssage}}</span>
-        {% endif %}	
+        {% endif %}
 
 
         {% if status is defined %}
@@ -25,15 +25,13 @@
 				    <blockquote class="blockquote mb-0">
 				      <p>{{response}}</p>
 				    </blockquote>
-			    {% endif %}	
+			    {% endif %}
 			  </div>
 			</div>
-        {% endif %}	
-        <a href="{{ url_for('professional.home_page') }}" class="btn green"role="button">HOME</a>
+        {% endif %}
+        <a href="{{ url_for('public.home_page') }}" class="btn green"role="button">HOME</a>
       </div>
     </div>
   </div>
 </main>
 {% endblock %}
-
-
